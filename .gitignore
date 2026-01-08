@@ -1,0 +1,11 @@
+# Ignore dataset CSV files
+*.csv
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE/editor files
+.vscode/
+.idea/
+*.log
