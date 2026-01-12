@@ -82,5 +82,32 @@ SET
   END;
   
   
+/* Research Q1: Which main Kickstarter categories have the highest success rates? */
 
+SELECT 
+    main_category,
+    COUNT(*) AS total_projects,
+    SUM(CASE WHEN state = 'successful' THEN 1 ELSE 0 END) AS successful_projects,
+    ROUND(SUM(CASE WHEN state = 'successful' THEN 1 ELSE 0 END) / COUNT(*) * 100, 2) AS success_rate_percent
+FROM kickstarter.projects
+WHERE main_category NOT IN ('USD', 'GBP', '')  -- remove any invalid categories
+GROUP BY main_category
+ORDER BY success_rate_percent DESC;
+;
 
+/* Research Q2: How does a project’s funding goal affect its likelihood of success? Do smaller goals achieve success more often than larger ones? */
+SELECT 
+    CASE 
+        WHEN goal < 10000 THEN 'Small'
+        WHEN goal BETWEEN 10000 AND 50000 THEN 'Medium'
+        ELSE 'Large'
+    END AS goal_size,
+    COUNT(*) AS total_projects,
+    SUM(CASE WHEN state = 'successful' THEN 1 ELSE 0 END) AS successful_projects,
+    ROUND(100.0 * SUM(CASE WHEN state = 'successful' THEN 1 ELSE 0 END) / COUNT(*), 2) AS success_rate
+FROM kickstarter.projects
+WHERE state NOT IN ('undefined', '109', '34', '0')
+GROUP BY goal_size
+ORDER BY success_rate DESC;
+
+ 
