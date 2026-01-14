@@ -96,7 +96,7 @@ ORDER BY success_rate_percent DESC;
 ;
 
 /* Research Q2: How does a project’s funding goal affect its likelihood of success? Do smaller goals achieve success more often than larger ones? */
-SELECT 
+SELECT  
     CASE 
         WHEN goal < 10000 THEN 'Small'
         WHEN goal BETWEEN 10000 AND 50000 THEN 'Medium'
@@ -110,4 +110,18 @@ WHERE state NOT IN ('undefined', '109', '34', '0')
 GROUP BY goal_size
 ORDER BY success_rate DESC;
 
- 
+/* Research Q3: How has the number of successful Kickstarter projects changed over time? */
+
+SELECT
+    YEAR(launched) AS launch_year,
+    CASE
+        WHEN state = 'successful' THEN 'Success'
+        ELSE 'Not success'
+    END AS project_result,
+    COUNT(*) AS total_projects
+FROM kickstarter.projects
+WHERE launched IS NOT NULL
+GROUP BY launch_year, project_result
+ORDER BY launch_year;
+
+
