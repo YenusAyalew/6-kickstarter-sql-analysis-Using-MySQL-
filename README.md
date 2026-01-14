@@ -36,7 +36,7 @@ I analyzed the average success rates for each Kickstarter category to see which 
 
 **Category Success Chart**
 
-![Category Success](Images/success_rate_by_category.png)
+![Category Success](images/success_rate_by_category.png)
 
 *Figure 1: Average success rate by main category.*
 
@@ -58,7 +58,7 @@ I analyzed how project funding goals affect the likelihood of success:
 
 **Funding Goal Success Chart**
 
-![Goal Success](Images/Goal_size_and_relations_shipp_to_success_rate.png)
+![Goal Success](images/Goal_size_and_relations_shipp_to_success_rate.png)
 
 *Figure 2: Success rate by funding goal size.*
 
@@ -72,7 +72,7 @@ I examined project launches over the years to identify patterns in success:
 
 **Time Trend Chart**
 
-![Time Trend](Images/Time_trend_analysis_v101.png)
+![Time Trend](images/Time_trend_analysis_v101.png)
 
 *Figure 3: Time trend of successful Kickstarter projects.*
 
